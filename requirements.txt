@@ -1,0 +1,2 @@
+thordata-sdk>=1.8.4
+python-dotenv>=1.0.0
